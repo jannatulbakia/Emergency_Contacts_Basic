@@ -8,7 +8,7 @@ heartButtons.forEach(function (btn) {
     heartCounter.textContent = currentCount + 1;
 
     btn.classList.toggle("text-red-500");
-  });
+  });
 });
 
 //---------------------------------------coin decrease-----------------------------//
@@ -18,58 +18,54 @@ const calltButtons = document.querySelectorAll(".call-btn");
 calltButtons.forEach(function (btn) {
   btn.addEventListener("click", function () {
     let currentCall = parseInt(callCounter.textContent);
-    if(currentCall <= 20){
+    if (currentCall <= 20) {
       alert("Not enoungh coin available to make the call")
       return;
     }
-    
+
     btn.classList.toggle("text-gray-500");
 
     callCounter.textContent = currentCall - 20;
-    const cardBody = btn.closest(".card-body"); 
-    const name = cardBody.querySelector("p").textContent; 
-    const number = cardBody.querySelector("h2").textContent; 
-    alert("Calling" +" "+ name + " " + number + "....");
-  });
+    const cardBody = btn.closest(".card-body");
+    const name = cardBody.querySelector("p").textContent;
+    const number = cardBody.querySelector("h2").textContent;
+    alert("Calling" + " " + name + " " + number + "....");
+  });
 });
 // --------------------------------Call history------------------------------//
 const callHistory = document.getElementById("history");
 const callButtons = document.querySelectorAll(".call-btn");
-const callClear = document.getElementById("clear");
 
-callButtons.forEach(function(btn) {
-  btn.addEventListener("click", function() {
 
-    const cardBody = btn.closest(".card-body"); 
-    const name = cardBody.querySelector("h1").textContent; 
-    const number = cardBody.querySelector("h2").textContent; 
+callButtons.forEach(function (btn) {
+  btn.addEventListener("click", function () {
+
+    const cardBody = btn.closest(".card-body");
+    const name = cardBody.querySelector("h1").textContent;
+    const number = cardBody.querySelector("h2").textContent;
     const date = new Date().toLocaleTimeString()
 
 
     const div = document.createElement("div");
+    div.className = "flex justify-between items-center bg-gray-50 p-3 rounded-lg shadow-sm mt-3"; // Updated CSS classes
+
     div.innerHTML = `
-      <div class="bg-gray-100 rounded-xl p-3 flex justify-between items-center mt-3">
-        <div class="flex justify-between ">
-          <div class="ml-3">
-            <p>${name}</p> 
-            <p>${number}</p>
-            </div>
-            <div class ="flex justify-between pl-2">
-            <p>${date}</p>
-            </div>
-        </div>
+      <div>
+        <p class="font-bold">${name}</p> 
+        <p class="text-sm text-gray-600">${number}</p>
       </div>
-    `
+      <span class="text-xs text-gray-500">${date}</span>
+    `;
     callHistory.appendChild(div);
 
   });
 });
 
-callClear.addEventListener("click", function() {
-   let callList = parseInt(callHistory.name);
 
-    callHistory.remove(callList);
+const callClearBtn = document.getElementById("clear");
 
+callClearBtn.addEventListener("click", function () {
+  callHistory.innerHTML = "";
 });
 
 //--------------------------Copy button-------------//
@@ -83,19 +79,19 @@ copyButtons.forEach(function (btn) {
     copytCounter.textContent = currentCount + 1;
   });
 });
- 
+
 //-----------copy clipborad----------------//
 document.querySelectorAll(".copy-btn").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-        const cardBody = btn.closest(".card-body");
-        const h2Text = cardBody.querySelector("h2").textContent;
-        navigator.clipboard.writeText(h2Text)
-            .then(() => {
-                console.log('Text copied to clipboard:', h2Text);
-            })
-            .catch(err => {
-                console.error('Failed to copy: ', err);
-            });
-           alert("The copied number is" + " " + h2Text );
-    });
+  btn.addEventListener("click", function () {
+    const cardBody = btn.closest(".card-body");
+    const h2Text = cardBody.querySelector("h2").textContent;
+    navigator.clipboard.writeText(h2Text)
+      .then(() => {
+        console.log('Text copied to clipboard:', h2Text);
+      })
+      .catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    alert("The copied number is" + " " + h2Text);
+  });
 });
