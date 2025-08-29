@@ -5,8 +5,11 @@ This work uses the few Javascript function. Some of the functions and their func
 Answer:  The main difference are:
 
 getElementById : This function returns the ID attribute's value of the element. It uses an ID to apply specfic interaction features.
+
 getElementsByClassName : This function returns the HTML Collection object. Returns an object containing all with the specified class name, as a collection of HTML Collection.
+
 querySelector : It can only be used to access a single element.
+
 querySelectorAll : It will first find all the elements that match the selector and then index the first element.
 
 2. How do you **create and insert a new element into the DOM**?
@@ -62,5 +65,6 @@ Example:  <div id ="oject">
 5. What is the difference between **preventDefault() and stopPropagation()** methods?
 
 Answer: The stopPropagation() function prevents further propagation of the current event in the capturing and bubbling phases and prevents the propagation of the same event from being called. 
+
 The preventDefault() prevents the default action the browser makes on that event this prevents the browser from executing the default behavior of the selected element. This method can cancel the event only if the event is cancelable.
 
